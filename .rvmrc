@@ -1,2 +1,2 @@
-rvm use ruby-1.9.2-p136@s3nuke
+rvm use ruby-1.9.2-p136@s3utils
 rvm info
