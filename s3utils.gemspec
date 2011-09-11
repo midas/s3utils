@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     development_dependencies = {
-      # %q<rspec> => [">= 2.0.0"]
+      %q<rspec> => [">= 2.0.0"]
     }
 
     runtime_dependencies = {
