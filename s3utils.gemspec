@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
 
     development_dependencies = {
       %q<rake> => [">= 0.9.2"],
-      %q<rspec> => [">= 2.6.0"]
+      %q<rspec> => [">= 2.6.0"],
+      %q<ruby-debug19> => [">= 0.11.6"],
     }
 
     runtime_dependencies = {

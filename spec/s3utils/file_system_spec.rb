@@ -86,5 +86,13 @@ describe S3utils::FileSystem do
     it { should == done_filename }
 
   end
+  
+  context '#partitioned_timestamp' do
+    
+    it "should return a sane partitioned timestamp" do
+      file_system.send( :partitioned_timestamp ).should =~ /\/\d{3}\/\d{3}\/\d{3}\/\d{3}\/\d{3}\/\d{2}/
+    end
+    
+  end
 
 end

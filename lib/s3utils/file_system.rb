@@ -46,6 +46,17 @@ module S3utils
     def timestamp
       Time.now.strftime "%Y%m%d%H%M%S%L"
     end
+    
+    def partitioned_timestamp
+      a_timestamp = timestamp
+      partitioned = []
+      
+      while a_timestamp.size > 0
+        partitioned << a_timestamp.slice!( 0..2 )
+      end
+      
+      "/#{File.join( *partitioned )}"
+    end
 
   end
 end
