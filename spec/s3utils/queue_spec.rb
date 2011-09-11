@@ -9,13 +9,13 @@ describe S3utils::Queue do
 
   let :queue_directories do
     %w(
-      my-queue/20110911114831127
+      /201/109/111/148/311/27
       my-queue/20110911114833567
     )
   end
 
-  def new_batch( queue_name, name )
-    S3utils::Batch.new queue_name,
+  def new_batch( queue, name )
+    S3utils::Batch.new queue,
                        name
   end
 
@@ -33,8 +33,8 @@ describe S3utils::Queue do
 
       subject { queue.batches }
 
-      it { should == [new_batch( 'my-queue', '20110911114831127' ),
-                      new_batch( 'my-queue', '20110911114833567' )] }
+      it { should == [new_batch( queue, '20110911114831127' ),
+                      new_batch( queue, '20110911114833567' )] }
 
     end
 

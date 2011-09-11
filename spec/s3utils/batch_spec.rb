@@ -3,17 +3,17 @@ require 'spec_helper'
 describe S3utils::Batch do
 
   let :batch do
-    S3utils::Batch.new 'my-queue',
+    S3utils::Batch.new S3utils::Queue.new( 'my-queue' ),
                        '20110911114831127'
   end
 
   let :batch_with_different_queue_name do
-    S3utils::Batch.new 'my-different-queue',
+    S3utils::Batch.new S3utils::Queue.new( 'my-different-queue' ),
                        '20110911114831127'
   end
 
   let :batch_with_different_name do
-    S3utils::Batch.new 'my-queue',
+    S3utils::Batch.new S3utils::Queue.new( 'my-queue' ),
                        '20110911114831128'
   end
 
