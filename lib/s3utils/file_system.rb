@@ -2,8 +2,12 @@ module S3utils
   class FileSystem
 
     def named_queue_path( name )
-      File.join base_path,
-                name
+      path = File.join( base_path,
+                        name )
+
+      FileUtils.mkdir_p path
+
+      path
     end
 
     def named_batch_path( name )
@@ -17,11 +21,11 @@ module S3utils
     end
 
     def to_do_filename
-      'to-do'
+      S3utils::TO_DO_FILENAME
     end
 
     def done_filename
-      'done'
+      S3utils::DONE_FILENAME
     end
 
     def base_path
@@ -30,7 +34,7 @@ module S3utils
     end
 
     def s3_utils_home
-      '.s3utils'
+      S3utils::HOME
     end
 
     def current_home

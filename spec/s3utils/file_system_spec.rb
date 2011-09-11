@@ -12,6 +12,17 @@ describe S3utils::FileSystem do
     S3utils::FileSystem.new
   end
 
+  def remove_queue_directory
+    path = File.join( File.expand_path( '~' ),
+                            S3utils::HOME,
+                            'my-queue' )
+    FileUtils.rm_rf( path ) if File.exists?( path )
+  end
+
+  after :each do
+    remove_queue_directory
+  end
+
   context '#current_home' do
 
     subject { file_system.current_home }
