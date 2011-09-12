@@ -17,5 +17,9 @@ module S3utils
       end
     end
 
+    def add_batch( keys )
+      Batch.create( self, keys )
+    end
+
   end
 end

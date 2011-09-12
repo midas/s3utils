@@ -65,4 +65,20 @@ describe S3utils::Batch do
 
   end
 
+  context '#partitioned_timestamp' do
+
+    it "should return a sane partitioned timestamp" do
+      batch.send( :partitioned_timestamp ).should =~ /\/\d{4}\/\d{2}\/\d{2}\/\d{2}\/\d{2}\/\d{2}/
+    end
+
+  end
+
+  context '#to_do_filename' do
+
+    subject { batch.send( :to_do_filename ) }
+
+    it { should == 'to-do' }
+
+  end
+
 end

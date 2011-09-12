@@ -41,20 +41,28 @@ module S3utils
       File.expand_path '~'
     end
 
-  private
-
     def timestamp
+      Time.now.strftime "%Y%m%d%H%M%S"
+    end
+
+    def long_timestamp
       Time.now.strftime "%Y%m%d%H%M%S%L"
     end
-    
+
     def partitioned_timestamp
-      a_timestamp = timestamp
+      partition( long_timestamp )
+    end
+
+    def partition( timestamp )
       partitioned = []
-      
-      while a_timestamp.size > 0
-        partitioned << a_timestamp.slice!( 0..2 )
-      end
-      
+
+      partitioned << timestamp.slice!( 0..3 ) # year
+      partitioned << timestamp.slice!( 0..1 ) # month
+      partitioned << timestamp.slice!( 0..1 ) # day
+      partitioned << timestamp.slice!( 0..1 ) # hour
+      partitioned << timestamp.slice!( 0..1 ) # minute
+      partitioned << timestamp                # seconds & milliseconds
+
       "/#{File.join( *partitioned )}"
     end
 

@@ -61,7 +61,7 @@ describe S3utils::Operations::BucketCopy do
       remove_queue_directory
     end
 
-    it "should create a base directory for the bucket copy" do
+    xit "should create a base directory for the bucket copy" do
       File.exists?( File.join( File.expand_path( '~' ),
                                S3utils::HOME,
                                bucket_copy.name )
